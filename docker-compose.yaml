@@ -21,7 +21,7 @@ services:
       MYSQL_USER: hw_user
       MYSQL_PASSWORD: XRjgGrFDJ9r9UsKCvJUq
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -36,8 +36,8 @@ services:
 
   resource-api:
     build:
-      context: ../Resource-API
-    container_name: resource-api
+      context: ../Resources-API
+    container_name: resources-api
     depends_on:
       - mysql
     expose:
