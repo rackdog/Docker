@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: gateway
+    ports:
+      - "9000:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - organization-api
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: NX4U7ogcyX9dC7N33eGc
+      MYSQL_DATABASE: hardware
+      MYSQL_USER: hw_user
+      MYSQL_PASSWORD: XRjgGrFDJ9r9UsKCvJUq
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  organization-api:
+    build:
+      context: ../Organization-API
+    container_name: organization-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+
+  resource-api:
+    build:
+      context: ../Resource-API
+    container_name: resource-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+
+  finance-api:
+    build:
+      context: ../Finance-API
+    container_name: finance-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+
+  sshkeys-api:
+    build:
+      context: ../SshKeys-API
+    container_name: sshkeys-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+
+  teammates-api:
+    build:
+      context: ../Teammates-API
+    container_name: teammates-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  default:
+    name: rackdog-net
+
+volumes:
+  mysql_data:
+  redis_data:
