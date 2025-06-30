@@ -1,5 +1,10 @@
 version: '3.8'
 
+x-dotnet-local: &dotnet-local
+  environment:
+    ASPNETCORE_ENVIRONMENT: Local
+    DOTNET_ENVIRONMENT: Local
+
 services:
   nginx:
     image: nginx:latest
@@ -16,16 +21,17 @@ services:
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: NX4U7ogcyX9dC7N33eGc
+      MYSQL_ROOT_PASSWORD: crnqNBgZM9-_otAFGwLh2
       MYSQL_DATABASE: hardware
       MYSQL_USER: hw_user
-      MYSQL_PASSWORD: K7Mo3XGWHRqbuAx!pGfg
+      MYSQL_PASSWORD: TERXvBWQ7nmy7L8pyAoC
     ports:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
   organization-api:
+    <<: *dotnet-local
     build:
       context: ../Organization-API
     container_name: organization-api
@@ -33,8 +39,11 @@ services:
       - mysql
     expose:
       - "8080"
+    volumes:
+      - ../Organization-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   resource-api:
+    <<: *dotnet-local
     build:
       context: ../Resources-API
     container_name: resources-api
@@ -42,8 +51,11 @@ services:
       - mysql
     expose:
       - "8080"
+    volumes:
+      - ../Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   finance-api:
+    <<: *dotnet-local
     build:
       context: ../Finance-API
     container_name: finance-api
@@ -51,8 +63,11 @@ services:
       - mysql
     expose:
       - "8080"
+    volumes:
+      - ../Finance-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   sshkeys-api:
+    <<: *dotnet-local
     build:
       context: ../SshKeys-API
     container_name: sshkeys-api
@@ -60,8 +75,11 @@ services:
       - mysql
     expose:
       - "8080"
+    volumes:
+      - ../SshKeys-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   teammates-api:
+    <<: *dotnet-local
     build:
       context: ../Teammates-API
     container_name: teammates-api
@@ -69,6 +87,8 @@ services:
       - mysql
     expose:
       - "8080"
+    volumes:
+      - ../Teammates-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   redis:
     image: redis:7-alpine
@@ -90,3 +110,4 @@ networks:
 volumes:
   mysql_data:
   redis_data:
+

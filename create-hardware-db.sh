@@ -6,10 +6,10 @@
 
 # Configuration (temporary credentials)
 MYSQL_CONTAINER="mysql"
-MYSQL_ROOT_PASSWORD="NX4U7ogcyX9dC7N33eGc"
+MYSQL_ROOT_PASSWORD="crnqNBgZM9-_otAFGwLh2"
 HW_DB="hardware"
 HW_USER="hw_user"
-HW_PASS="K7Mo3XGWHRqbuAx"
+HW_PASS="TERXvBWQ7nmy7L8pyAoC"
 
 # Run the SQL statements inside the container
 docker exec -i "${MYSQL_CONTAINER}" mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" <<EOSQL

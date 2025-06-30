@@ -21,6 +21,7 @@ for dir in */; do
 
         if [ ! -z "$csproj_file" ]; then
             echo "Publishing project in $dir ..."
+            rm -r ./publish
             dotnet publish "$csproj_file" -o "./publish"
         else
             echo "No .csproj file found in $dir, skipping publish."
