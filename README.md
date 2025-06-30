@@ -10,7 +10,9 @@ To update your local, run docker (listed below) first, then run the ./restore-my
 
 
 ## RUNNING DOCKER##
-Firstly, there must be a ./publish folder in each of the repos so we can generate an image
+Firstly, there must be a ./publish folder in each of the repos so we can generate an image.
+
+So, there is a script ./generate-publish-folder.sh you can run to speed this up.
 
 For the docker compose to work, place this repo in the same directory where all the APIs are, and run "docker-compose up". It should download everything.
 
