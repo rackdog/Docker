@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: NX4U7ogcyX9dC7N33eGc
       MYSQL_DATABASE: hardware
       MYSQL_USER: hw_user
-      MYSQL_PASSWORD: XRjgGrFDJ9r9UsKCvJUq
+      MYSQL_PASSWORD: K7Mo3XGWHRqbuAx!pGfg
     ports:
       - "3307:3306"
     volumes:
