@@ -90,6 +90,42 @@ services:
     volumes:
       - ../Teammates-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
+  admin-resources-api:
+    <<: *dotnet-local
+    build:
+      context: ../Admin-Resources-API
+    container_name: admin-resources-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../Admin-Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
+  admin-plans-api:
+    <<: *dotnet-local
+    build:
+      context: ../Admin-Plans-API
+    container_name: admin-plans-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../Admin-Plans-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
+  admin-organizations-api:
+    <<: *dotnet-local
+    build:
+      context: ../Admin-Organizations-API
+    container_name: admin-organizations-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../Admin-Organizations-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
   redis:
     image: redis:7-alpine
     ports:
