@@ -25,8 +25,8 @@ for dir in */; do
                 echo "Skipping publishing for Rackdog.csproj in $dir."
             else
                 echo "Publishing project in $dir ..."
-                dotnet nuget locals all --clear
-                dotnet add package rackdog.Rackdog
+                git reset --hard
+                git pull || true
                 rm -r ./publish
                 dotnet publish "$csproj_file" -o "./publish"
             fi

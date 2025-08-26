@@ -45,14 +45,14 @@ services:
   resource-api:
     <<: *dotnet-local
     build:
-      context: ../Resources-API
-    container_name: resources-api
+      context: ../Resource-API
+    container_name: resource-api
     depends_on:
       - mysql
     expose:
       - "8080"
     volumes:
-      - ../Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ../Resource-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   finance-api:
     <<: *dotnet-local
@@ -78,6 +78,18 @@ services:
     volumes:
       - ../SshKeys-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
+  apikey-api:
+    <<: *dotnet-local
+    build:
+      context: ../ApiKey-API
+    container_name: apikey-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../ApiKey-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
   teammates-api:
     <<: *dotnet-local
     build:
@@ -102,6 +114,18 @@ services:
     volumes:
       - ../Admin-Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
+  admin-financial-api:
+    <<: *dotnet-local
+    build:
+      context: ../Admin-Financial-API
+    container_name: admin-financial-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../Admin-Financial-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
   admin-plans-api:
     <<: *dotnet-local
     build:
@@ -125,6 +149,18 @@ services:
       - "8080"
     volumes:
       - ../Admin-Organizations-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
+  job-controller-api:
+    <<: *dotnet-local
+    build:
+      context: ../Job-Controller-API
+    container_name: job-controller-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../Job-Controller-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   redis:
     image: redis:7-alpine
