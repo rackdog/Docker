@@ -45,14 +45,14 @@ services:
   resource-api:
     <<: *dotnet-local
     build:
-      context: ../Resource-API
+      context: ../Resources-API
     container_name: resource-api
     depends_on:
       - mysql
     expose:
       - "8080"
     volumes:
-      - ../Resource-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ../Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   finance-api:
     <<: *dotnet-local
@@ -113,6 +113,18 @@ services:
       - "8080"
     volumes:
       - ../Admin-Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
+  admin-orders-api:
+    <<: *dotnet-local
+    build:
+      context: ../Admin-Orders-API
+    container_name: admin-orders-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
+    volumes:
+      - ../Admin-Orders-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-financial-api:
     <<: *dotnet-local
