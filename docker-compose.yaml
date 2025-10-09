@@ -51,6 +51,7 @@ services:
       - mysql
     expose:
       - "8080"
+      - "50051"
     volumes:
       - ../Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
@@ -111,6 +112,7 @@ services:
       - mysql
     expose:
       - "8080"
+      - "50051"
     volumes:
       - ../Admin-Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
@@ -161,6 +163,15 @@ services:
       - "8080"
     volumes:
       - ../Admin-Organizations-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+
+  admin-pdf-api:
+    build:
+      context: ../Admin-Pdf-API
+    container_name: admin-pdf-api
+    depends_on:
+      - mysql
+    expose:
+      - "8080"
 
   job-controller-api:
     <<: *dotnet-local
