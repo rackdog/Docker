@@ -125,6 +125,7 @@ services:
       - mysql
     expose:
       - "8080"
+      - "50051"
     volumes:
       - ../Admin-Orders-API/appsettings.Local.json:/app/appsettings.Local.json:ro
 
