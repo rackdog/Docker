@@ -40,7 +40,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Organization-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   resource-api:
     <<: *dotnet-local
@@ -53,7 +53,7 @@ services:
       - "8080"
       - "50051"
     volumes:
-      - ../Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   finance-api:
     <<: *dotnet-local
@@ -65,7 +65,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Finance-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   sshkeys-api:
     <<: *dotnet-local
@@ -77,7 +77,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../SshKeys-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   apikey-api:
     <<: *dotnet-local
@@ -89,7 +89,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../ApiKey-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   teammates-api:
     <<: *dotnet-local
@@ -101,7 +101,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Teammates-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-resources-api:
     <<: *dotnet-local
@@ -114,7 +114,7 @@ services:
       - "8080"
       - "50051"
     volumes:
-      - ../Admin-Resources-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-orders-api:
     <<: *dotnet-local
@@ -127,7 +127,7 @@ services:
       - "8080"
       - "50051"
     volumes:
-      - ../Admin-Orders-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-financial-api:
     <<: *dotnet-local
@@ -139,7 +139,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Admin-Financial-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-plans-api:
     <<: *dotnet-local
@@ -151,7 +151,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Admin-Plans-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-organizations-api:
     <<: *dotnet-local
@@ -163,7 +163,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Admin-Organizations-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   admin-pdf-api:
     build:
@@ -184,7 +184,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - ../Job-Controller-API/appsettings.Local.json:/app/appsettings.Local.json:ro
+      - ./appsettings.Local.json:/app/appsettings.Local.json:ro
 
   redis:
     image: redis:7-alpine
